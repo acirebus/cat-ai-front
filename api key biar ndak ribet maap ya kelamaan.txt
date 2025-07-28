@@ -1,0 +1,26 @@
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=catai
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Groq API Configuration
+GROQ_API_KEY=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
+GROQ_API_URL=https://api.groq.com/openai/v1/chat/completions
+GROQ_MODEL=llama3-8b-8192
+
+# Cat API Configuration (opsional katanya bang)
+CAT_API_KEY=your_cat_api_key_here
+CAT_API_URL=https://api.thecatapi.com/v1/images/search
+
+
+
+terakhir kali nyimpennya di paling bawah .env
+
+api key gini boleh di-share secara bebas gitu ga sih? masih bingung saya ':D
+anyway maap banget kelamaan, walaupun karna ada pekerjaan tiap pulang sekolah pun balik lagi ke aku yang kurang bisa manage waktu huhu
+
+i'll buy u a drink or something as an apology tomorrow :D
+
+kalo soal cat api key, aku belum dapet email balik dari site-nya
