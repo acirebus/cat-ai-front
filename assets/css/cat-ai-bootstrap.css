@@ -1,0 +1,236 @@
+/* cat-AI Bootstrap Theme */
+
+:root {
+    --cat-orange: #f97316;
+    --cat-orange-dark: #ea580c;
+    --cat-orange-light: #fed7aa;
+    --cat-gray: #6b7280;
+    --cat-gray-light: #f3f4f6;
+    --cat-gray-dark: #374151;
+}
+
+/* Custom cat-themed classes */
+.text-cat {
+    color: var(--cat-orange) !important;
+}
+
+.bg-cat {
+    background-color: var(--cat-orange) !important;
+}
+
+.border-cat {
+    border-color: var(--cat-orange) !important;
+}
+
+.btn-cat {
+    background-color: var(--cat-orange);
+    border-color: var(--cat-orange);
+    color: white;
+}
+
+.btn-cat:hover {
+    background-color: var(--cat-orange-dark);
+    border-color: var(--cat-orange-dark);
+    color: white;
+}
+
+.btn-outline-cat {
+    color: var(--cat-orange);
+    border-color: var(--cat-orange);
+}
+
+.btn-outline-cat:hover {
+    background-color: var(--cat-orange);
+    border-color: var(--cat-orange);
+    color: white;
+}
+
+/* Dark mode overrides */
+.dark-mode {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .bg-white {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .bg-light {
+    background-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .text-muted {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .border {
+    border-color: #475569 !important;
+}
+
+.dark-mode .form-control {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .form-control:focus {
+    background-color: #334155 !important;
+    border-color: var(--cat-orange) !important;
+    color: #f1f5f9 !important;
+    box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25) !important;
+}
+
+.dark-mode .form-select {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .table {
+    --bs-table-bg: #1e293b;
+    --bs-table-color: #f1f5f9;
+    --bs-table-border-color: #475569;
+    --bs-table-hover-bg: #334155;
+}
+
+.dark-mode .card {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+}
+
+.dark-mode .modal-content {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+}
+
+.dark-mode .nav-tabs {
+    border-bottom-color: #475569 !important;
+}
+
+.dark-mode .nav-tabs .nav-link {
+    color: #94a3b8 !important;
+    border-color: transparent !important;
+}
+
+.dark-mode .nav-tabs .nav-link.active {
+    background-color: #1e293b !important;
+    border-color: #475569 #475569 #1e293b !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .navbar {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+}
+
+.dark-mode .alert-warning {
+    background-color: #451a03 !important;
+    border-color: #78350f !important;
+    color: #fbbf24 !important;
+}
+
+/* Custom animations */
+@keyframes purr {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.cat-avatar:hover {
+    animation: purr 0.5s ease-in-out;
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cat-orange);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cat-orange-dark);
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background: #334155;
+}
+
+/* Typography adjustments */
+.small {
+    font-size: 0.85rem;
+}
+
+.fw-medium {
+    font-weight: 500;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Focus states */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25);
+}
+
+/* Utility classes */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.user-select-none {
+    user-select: none;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Cat-themed hover effects */
+.stats-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-1px);
+}
+
+/* Additional spacing utilities */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 1rem;
+}
+
+.gap-4 {
+    gap: 1.5rem;
+}
