@@ -1,18 +1,3 @@
-# cat-AI Integration Guide 🐱
-
-This guide explains how to connect the cat-AI frontend template to actual backend services.
-
-## Overview
-
-The cat-AI application is now a clean template ready for backend integration. All placeholder data and mock responses have been removed, leaving you with:
-
-- ✅ Complete UI structure
-- ✅ Session management framework
-- ✅ API endpoint handlers (empty)
-- ✅ JavaScript functions for interactivity
-- ✅ Configuration structure
-- ❌ No hardcoded data or responses
-
 ## Required Integrations
 
 ### 1. Groq API Integration
