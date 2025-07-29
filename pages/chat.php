@@ -41,6 +41,12 @@
         .chat-message {
             margin-bottom: 1rem;
         }
+        .chat-bubble {
+            display: inline-block;
+            max-width: 100%;
+            word-break: break-word;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
         
         .user-message {
             margin-left: 2rem;
@@ -106,13 +112,11 @@
         }
         
         .main-content {
-            margin-left: 280px;
             height: 100vh;
             transition: margin-left 0.3s ease;
         }
-        
-        .main-content.expanded {
-            margin-left: 0;
+        .main-content.sidebar-closed {
+            margin-left: 0 !important;
         }
         
         .chat-container {
@@ -154,9 +158,9 @@
     </style>
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="display: flex; height: 100vh;">
         <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
+        <div id="sidebar" class="sidebar" style="flex-shrink: 0; height: 100vh; margin-bottom: 0;">
             <div class="p-3 border-bottom">
                 <div class="d-flex align-items-center gap-2 mb-3">
                     <div class="cat-avatar">
@@ -168,7 +172,6 @@
                     <i data-lucide="plus" class="me-2"></i>new chat
                 </button>
             </div>
-            
             <div class="p-3 flex-grow-1">
                 <div class="text-muted small mb-2">recent chats</div>
                 <div id="chatHistory">
@@ -178,7 +181,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="p-3 border-top">
                 <div class="d-flex align-items-center gap-2 mb-2">
                     <div class="cat-avatar" style="width: 24px; height: 24px;">
@@ -194,9 +196,8 @@
                 </div>
             </div>
         </div>
-
         <!-- Main Content -->
-        <div id="mainContent" class="main-content">
+        <div id="mainContent" class="main-content" style="flex-grow: 1; height: 100vh;">
             <!-- Header -->
             <div class="bg-white border-bottom p-3 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
@@ -210,7 +211,6 @@
                 </div>
                 <div class="text-muted small">using Groq API</div>
             </div>
-
             <!-- Chat Area -->
             <div id="chatContainer" class="chat-container">
                 <!-- Welcome Screen -->
@@ -220,13 +220,11 @@
                     </div>
                     <h1 class="mb-3">welcome back, <?php echo htmlspecialchars($_SESSION['user']['name']); ?>!</h1>
                     <p class="text-muted mb-4">meow (ur feline AI assistant is ready to perform! ask me anything now!)</p>
-                    
                     <?php if ($_SESSION['user']['isGuest']): ?>
                     <div class="alert alert-warning mb-4">
                         <strong>meow</strong> (ur using cat-AI as a guest! some features might be limited. consider creating an account for the full experience!)
                     </div>
                     <?php endif; ?>
-                    
                     <div class="welcome-buttons">
                         <button class="btn btn-outline-primary text-start p-3" onclick="sendPresetMessage('what can you help me with?')">
                             <div class="fw-medium">explore paw-sibilities</div>
@@ -246,10 +244,8 @@
                         </button>
                     </div>
                 </div>
-
                 <!-- Messages -->
                 <div id="messages" style="display: none;"></div>
-                
                 <!-- Typing Indicator -->
                 <div id="typingIndicator" class="typing-indicator chat-message">
                     <div class="d-flex gap-3 p-3">
@@ -267,7 +263,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Input Section -->
             <div class="input-section">
                 <div class="container-fluid">
@@ -301,13 +296,12 @@
             sidebarOpen = !sidebarOpen;
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
-            
             if (sidebarOpen) {
                 sidebar.classList.remove('collapsed');
-                mainContent.classList.remove('expanded');
+                mainContent.classList.remove('sidebar-closed');
             } else {
                 sidebar.classList.add('collapsed');
-                mainContent.classList.add('expanded');
+                mainContent.classList.add('sidebar-closed');
             }
         }
 
@@ -325,11 +319,6 @@
             document.getElementById('welcomeScreen').style.display = 'flex';
             document.getElementById('messages').style.display = 'none';
             document.getElementById('messageInput').value = '';
-            
-            // Close sidebar on mobile
-            if (window.innerWidth < 768) {
-                toggleSidebar();
-            }
         }
 
         function selectChat(chatId) {
@@ -431,7 +420,7 @@
                     ` : ''}
                     <div class="flex-grow-1 ${isUser ? 'text-end' : ''}">
                         <div class="fw-medium mb-2">${isUser ? 'you' : 'cat-AI'}</div>
-                        <div class="p-3 rounded ${isUser ? 'bg-primary text-white' : 'bg-light'}">
+                        <div class="chat-bubble p-3 rounded ${isUser ? 'bg-primary text-white' : 'bg-light'}">
                             ${content}
                             ${imageUrl ? `<br><img src="${imageUrl}" class="img-fluid mt-2 rounded" style="max-width: 300px;">` : ''}
                         </div>
@@ -476,14 +465,7 @@
         }
 
         function generateCatResponse(userMessage) {
-            const responses = [
-                `meow (I understand you said: "${userMessage}". as a cat AI, I must say that's quite purr-fect!)`,
-                `meow (regarding "${userMessage}" - that's interesting! *swishes tail thoughtfully*)`,
-                `meow (about "${userMessage}" - let me pounce on that thought! *playful cat noises*)`,
-                `meow (ur message "${userMessage}" reminds me of when I was a kitten... *nostalgic purring*)`,
-                `meow (hmm, "${userMessage}" - that's worth a good cat nap to think about! *yawns*)`,
-            ];
-            return responses[Math.floor(Math.random() * responses.length)];
+            return `meow (i understand u said "${userMessage}" this is a demo response from cat-ai sebelum connect ke api groq)`;
         }
 
         function showManagement() {
