@@ -13,7 +13,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 // Handle route switching
-$page = $_GET['page'] ?? 'chat';
+$page = $_GET['page'] ?? 'login';
 
 switch ($page) {
     case 'management':
