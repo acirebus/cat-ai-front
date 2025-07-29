@@ -6,7 +6,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 # Groq API Configuration
-GROQ_API_KEY=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
+GROQ_API_KEY=isi bang
 GROQ_API_URL=https://api.groq.com/openai/v1/chat/completions
 GROQ_MODEL=llama3-8b-8192
 
