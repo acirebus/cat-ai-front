@@ -158,9 +158,9 @@
     </style>
 </head>
 <body>
-    <div id="app" style="display: flex; height: 100vh;">
+    <div id="app" style="height: 100vh; display: flex;">
         <!-- Sidebar -->
-        <div id="sidebar" class="sidebar" style="flex-shrink: 0; height: 100vh; margin-bottom: 0;">
+        <div id="sidebar" class="sidebar" style="flex-shrink: 0; height: 100vh;">
             <div class="p-3 border-bottom">
                 <div class="d-flex align-items-center gap-2 mb-3">
                     <div class="cat-avatar">
@@ -197,7 +197,7 @@
             </div>
         </div>
         <!-- Main Content -->
-        <div id="mainContent" class="main-content" style="flex-grow: 1; height: 100vh;">
+        <div id="mainContent" class="main-content" style="flex-grow: 1; height: 100vh; display: flex; flex-direction: column;">
             <!-- Header -->
             <div class="bg-white border-bottom p-3 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
@@ -211,8 +211,9 @@
                 </div>
                 <div class="text-muted small">using Groq API</div>
             </div>
-            <!-- Chat Area -->
-            <div id="chatContainer" class="chat-container">
+            <!-- Chat Area and Input -->
+            <div style="flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0;">
+                <div id="chatContainer" class="chat-container" style="flex: 1 1 auto;">
                 <!-- Welcome Screen -->
                 <div id="welcomeScreen" class="welcome-screen">
                     <div class="cat-avatar mb-4" style="width: 80px; height: 80px;">
@@ -362,10 +363,7 @@
             // Clear input
             input.value = '';
             
-            // Close sidebar when sending message
-            if (sidebarOpen) {
-                toggleSidebar();
-            }
+            // ...existing code...
 
             // Show messages container
             showMessages();
