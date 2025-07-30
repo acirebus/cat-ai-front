@@ -27,4 +27,4 @@ switch ($page) {
         include 'pages/chat.php';
         break;
 }
-?>
+?>8
