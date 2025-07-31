@@ -1,6 +1,16 @@
 <?php
 // components/php/functions.php - Utility functions and database operations
 
+/**
+ * Find user by email
+ */
+function findUserByEmail($email) {
+    $userModel = new UserModel();
+    $sql = "SELECT * FROM users WHERE email = ? LIMIT 1";
+    // Use the database connection from UserModel
+    return $userModel->getUserByEmail($email);
+}
+
 // Include database models
 require_once __DIR__ . '/../../database/models.php';
 
