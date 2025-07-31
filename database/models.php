@@ -4,6 +4,10 @@
 require_once __DIR__ . '/connection.php';
 
 class UserModel {
+    public function getUserByEmail($email) {
+        $sql = "SELECT * FROM users WHERE email = ? LIMIT 1";
+        return $this->db->fetch($sql, [$email]);
+    }
     private $db;
     
     public function __construct() {
