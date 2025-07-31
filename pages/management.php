@@ -343,6 +343,23 @@
             // Load empty tables - ready for backend integration
             loadUsers();
             loadApiLogs();
+
+            // --- Uncomment below to enable backend integration ---
+            // fetch('api/get_users.php')
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         users = data.users;
+            //         document.getElementById('totalUsers').textContent = users.length;
+            //         loadUsers();
+            //     });
+
+            // fetch('api/get_api_logs.php')
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         apiLogs = data.logs;
+            //         document.getElementById('apiCalls').textContent = apiLogs.length;
+            //         loadApiLogs();
+            //     });
         }
 
         function loadUsers() {
@@ -352,7 +369,7 @@
                     <tr>
                         <td colspan="7" class="text-center text-muted py-4">
                             <i data-lucide="users" class="mb-2"></i><br>
-                            no users found. ready for backend integration!
+                            no users found. ready for backend integration
                         </td>
                     </tr>
                 `;
@@ -386,7 +403,7 @@
                     <tr>
                         <td colspan="7" class="text-center text-muted py-4">
                             <i data-lucide="activity" class="mb-2"></i><br>
-                            no API logs found. ready for backend integration!
+                            no API logs found. ready for backend integration
                         </td>
                     </tr>
                 `;
@@ -477,15 +494,45 @@
             bootstrap.Modal.getInstance(document.getElementById('editUserModal')).hide();
 
             console.log('User updated:', users[userIndex], '- Ready for backend integration');
+
+            // --- Uncomment below to enable backend integration ---
+            // fetch('api/edit_user.php', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            //     body: `id=${userId}&username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&role=${encodeURIComponent(role)}&status=${encodeURIComponent(status)}`
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         loadData();
+            //     } else {
+            //         alert('Update failed: ' + data.message);
+            //     }
+            // });
         }
 
         function deleteUser(userId) {
             if (confirm('are you sure you want to delete this user? this action cannot be undone.')) {
-                users = users.filter(u => u.id !== userId);
-                loadUsers();
-                document.getElementById('totalUsers').textContent = users.length;
-                
-                console.log('User deleted:', userId, '- Ready for backend integration');
+            users = users.filter(u => u.id !== userId);
+            loadUsers();
+            document.getElementById('totalUsers').textContent = users.length;
+            
+            console.log('User deleted:', userId, '- Ready for backend integration');
+
+            // --- Uncomment below to enable backend integration ---
+            // fetch('api/delete_user.php', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            //     body: `id=${userId}`
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         loadData();
+            //     } else {
+            //         alert('Delete failed: ' + data.message);
+            //     }
+            // });
             }
         }
     </script>
