@@ -162,12 +162,31 @@
             event.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            
+
             // Mock login - ready for backend integration
             console.log('Login attempt:', { email, password });
             
             // Redirect to chat
             window.location.href = '?page=chat';
+
+            // fetch('login.php', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded'
+            //     },
+            //     body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         window.location.href = '?page=chat';
+            //     } else {
+            //         alert('Login failed: ' + data.message);
+            //     }
+            // })
+            // .catch(() => {
+            //     alert('Login failed: server error');
+            // });
         }
 
         function handleRegister(event) {
@@ -175,12 +194,33 @@
             const username = document.getElementById('registerUsername').value;
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
-            
+
             // Mock registration - ready for backend integration
             console.log('Registration attempt:', { username, email, password });
             
             // Redirect to chat
             window.location.href = '?page=chat';
+        }
+
+            // fetch('register.php', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded'
+            //     },
+            //     body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         // Registration successful, redirect to chat
+            //         window.location.href = '?page=chat';
+            //     } else {
+            //         alert('Registration failed: ' + data.message);
+            //     }
+            // })
+            // .catch(() => {
+            //     alert('Registration failed: server error');
+            // });
         }
 
         function continueWithoutLogin() {
