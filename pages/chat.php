@@ -26,6 +26,8 @@
         .dark-mode .border {
             border-color: #374151 !important;
         }
+
+        
         
         .cat-avatar {
             background-color: var(--cat-orange);
@@ -155,6 +157,49 @@
             background: #1e293b;
             border-top-color: #374151;
         }
+
+                /* Force all text to white in dark mode */
+        .dark-mode,
+        .dark-mode .main-content,
+        .dark-mode .sidebar,
+        .dark-mode .bg-light,
+        .dark-mode .border-bottom,
+        .dark-mode .border-top,
+        .dark-mode .bg-white,
+        .dark-mode .text-muted,
+        .dark-mode .small,
+        .dark-mode h1,
+        .dark-mode h6,
+        .dark-mode p,
+        .dark-mode .fw-medium,
+        .dark-mode .welcome-screen,
+        .dark-mode .welcome-buttons,
+        .dark-mode .chat-bubble {
+            color: #f1f5f9 !important;
+        }
+
+        /* Add these styles at the end of your CSS file */
+
+.dark-mode .sidebar {
+    background-color: #1e293b !important;
+    border-right-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .sidebar .bg-light,
+.dark-mode .sidebar .border-bottom,
+.dark-mode .sidebar .border-top {
+    background-color: #1e293b !important;
+    border-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .main-content .bg-white,
+.dark-mode .main-content .border-bottom {
+    background-color: #1e293b !important;
+    border-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
     </style>
 </head>
 <body>
@@ -189,7 +234,9 @@
                     <span class="small"><?php echo htmlspecialchars($_SESSION['user']['name']); ?></span>
                 </div>
                 <div class="d-flex gap-2">
+                    <?php if (!$_SESSION['user']['isGuest'] || !empty($_SESSION['user']['is_admin'])): ?>
                     <button class="btn btn-sm btn-outline-secondary" onclick="showManagement()">manage...</button>
+                    <?php endif; ?>
                     <button class="btn btn-sm btn-outline-secondary" onclick="toggleDarkMode()">
                         <i data-lucide="moon" id="themeIcon"></i>
                     </button>
@@ -229,7 +276,7 @@
                     <div class="welcome-buttons">
                         <button class="btn btn-outline-primary text-start p-3" onclick="sendPresetMessage('what can you help me with?')">
                             <div class="fw-medium">explore paw-sibilities</div>
-                            <div class="text-muted small">what can you help meow with?</div>
+                            <div class="text-muted small">what can you help me with?</div>
                         </button>
                         <button class="btn btn-outline-primary text-start p-3" onclick="sendPresetMessage('random cat image')">
                             <div class="fw-medium">random cat image</div>
@@ -268,7 +315,7 @@
             <div class="input-section">
                 <div class="container-fluid">
                     <div class="input-group">
-                        <input type="text" id="messageInput" class="form-control" placeholder="meow me something..." onkeypress="handleKeyPress(event)">
+                        <input type="text" id="messageInput" class="form-control" placeholder="message me something.." onkeypress="handleKeyPress(event)">
                         <button class="btn btn-primary" onclick="sendMessage()" id="sendButton">
                             <i data-lucide="send"></i>
                         </button>
@@ -362,8 +409,6 @@
 
             // Clear input
             input.value = '';
-            
-            // ...existing code...
 
             // Show messages container
             showMessages();
@@ -386,13 +431,13 @@
                         if (imageUrl) {
                             addMessage('meow (here\'s a random cat image for ur viewing pleasure!)', false, imageUrl);
                         } else {
-                            addMessage('meow (sorry, I couldn\'t fetch a cat image right now. maybe try again later? *sad meow*)', false);
+                            addMessage('meow (sorry, I couldn\'t fetch a cat image right now. maybe try again later?)', false);
                         }
                     }, 1500);
                 } catch (error) {
                     setTimeout(() => {
                         hideTyping();
-                        addMessage('meow (sorry, I couldn\'t fetch a cat image right now. maybe try again later? *sad meow*)', false);
+                        addMessage('meow (sorry, I couldn\'t fetch a cat image right now. maybe try again later?)', false);
                     }, 1500);
                 }
             } else {
@@ -463,7 +508,7 @@
         }
 
         function generateCatResponse(userMessage) {
-            return `meow (i understand u said "${userMessage}" this is a demo response from cat-ai sebelum connect ke api groq)`;
+            return `meow (i understand u said "${userMessage}" this is a demo response from cat-ai before connecting to groq's API.)`;
         }
 
         function showManagement() {
