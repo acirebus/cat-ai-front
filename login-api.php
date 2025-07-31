@@ -1,5 +1,5 @@
-// <?php
-// // login.php - Handles user login via AJAX
+<?php
+// login-api.php - Handles user login via AJAX
 // require_once __DIR__ . '/components/php/functions.php';
 // session_start();
 // header('Content-Type: application/json');
